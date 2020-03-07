@@ -3,6 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const productRouter = require("./routes/views/products");
 const productApiRouter = require("./routes/api/products");
+const config = require('./config');
 
 //app
 const app = express();
@@ -27,6 +28,6 @@ app.get("/", (req, res) => {
 });
 
 //server
-const server = app.listen(8000, function() {
+const server = app.listen(config.port, function() {
   console.log(`Listen http://localhost:${server.address().port}`);
 });

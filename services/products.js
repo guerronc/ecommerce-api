@@ -13,19 +13,21 @@ class ProductService {
   }
 
   async getProduct({ productId }) {
-    const products = await this.mongoDB.get(this.collection,productId);
-    return products || [];
+    const product = await this.mongoDB.get(this.collection,productId);
+    return product || [];
   }
 
   async createProduct({ product }) {
-    const products = await this.mongoDB.create(this.collection,product);
-    return products || [];
+    const createProductId = await this.mongoDB.create(this.collection,product);
+    return createProductId;
   }
-  updateProduct({ productId, product }) {
-    return Promise.resolve(productsMocks[0]);
+  async updateProduct({ productId, product }) {
+    const updateProductId = await this.mongoDB.update(this.collection, productId,product)
+    return updateProductId;
   }
-  deleteProduct({ productId }) {
-    return Promise.resolve(productsMocks[0]);
+  async deleteProduct({ productId }) {
+    const deletedProductId = await this.mongoDB.delete(this.collection, productId)
+    return deletedProductId;
   }
 }
 
