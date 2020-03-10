@@ -3,7 +3,12 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const productRouter = require("./routes/views/products");
 const productApiRouter = require("./routes/api/products");
-const config = require('./config');
+const config = require("./config");
+const {
+  logErrors,
+  clientErrorHandlers,
+  errorHandler
+} = require("./utils/middleware/errorsHandlers");
 
 //app
 const app = express();
@@ -26,6 +31,11 @@ app.use("/api/products", productApiRouter);
 app.get("/", (req, res) => {
   res.redirect("/products");
 });
+
+//error handlers
+app.use(logErrors);
+app.use(clientErrorHandlers);
+app.use(errorHandler);
 
 //server
 const server = app.listen(config.port, function() {

@@ -9,6 +9,7 @@ const router = express.Router();
 router.get("/", async (req, res, next) => {
   const { tags } = req.query;
   try {
+    throw new Error('this is an error for the api')
     const products = await productService.getProducts({ tags });
     res.status(200).json({ data: products, message: "Product list" });
   } catch (error) {

@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^17.1.0",
+    "@sentry/node": "^5.13.2",
     "body-parser": "^1.19.0",
     "consolidate": "^0.15.1",
     "dotenv": "^8.2.0",
