@@ -22,6 +22,7 @@ function clientErrorHandlers(err, req, res, next) {
 
 function errorHandler(err, req, res, next) {
   //Catch error while streaming
+  
   if (res.headersSent) {
     next(err);
   }
