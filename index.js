@@ -5,6 +5,8 @@ const boom = require("@hapi/boom");
 
 const productRouter = require("./routes/views/products");
 const productApiRouter = require("./routes/api/products");
+const authApiRouter = require("./routes/api/auth");
+
 const config = require("./config");
 const {
   logErrors,
@@ -30,7 +32,8 @@ app.set("view engine", "pug");
 
 //routes (Controller)
 app.use("/products", productRouter);
-app.use("/api/products", productApiRouter);
+productApiRouter(app);
+app.use('/api/auth', authApiRouter);
 
 //Redirect routes
 app.get("/", (req, res) => {
