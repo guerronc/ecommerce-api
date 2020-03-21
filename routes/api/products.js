@@ -2,8 +2,6 @@ const express = require("express");
 const ProductService = require("../../services/products");
 const passport = require("passport");
 
-
-
 //Middleware of validation
 const validation = require("../../utils/middleware/validationHandler");
 //Schemas of validation
