@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "dev:inspect": "nodemon --inspect",
+    "dev:debug": "set DEBUG=express:*,app:* & npm run dev",
+    "debug": "set DEBUG=express:*,app:* & npm run start",
     "test": "mocha --exit",
     "test:cover": "nyc npm run test"
   },
@@ -19,6 +22,7 @@
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "consolidate": "^0.15.1",
+    "debug": "^4.1.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "handlebars": "^4.7.3",
