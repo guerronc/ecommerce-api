@@ -16,7 +16,7 @@ function withErrorStacks(err, stack) {
 }
 
 function logErrors(err, req, res, next) {
-  Sentry.captureException(err);
+  !config.dev && Sentry.captureException(err);
   debug(err.stack);
   next(err);
 }
