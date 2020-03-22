@@ -12,6 +12,13 @@ const {
   updateProductSchema
 } = require("../../utils/schemas/product");
 
+//DEPENDENCY OF CACHE RESPONSE
+const cacheResponse = require("../../utils/cacheResponse");
+const {
+  FIVE_MINUTES_IN_SECONDS,
+  SIXTY_MINUTES_IN_SECONDS
+} = require("../../utils/time");
+
 //JWT Strategy
 require("../../utils/auth/strategies/jwt");
 
@@ -20,8 +27,9 @@ const productsApi = app => {
   //Rutas
   const router = express.Router();
   app.use("/api/products", router);
-  
+
   router.get("/", async (req, res, next) => {
+    cacheResponse(res, FIVE_MINUTES_IN_SECONDS);
     const { tags } = req.query;
     try {
       const products = await productService.getProducts({ tags });
@@ -31,6 +39,7 @@ const productsApi = app => {
     }
   });
   router.get("/:productId", async (req, res, next) => {
+    cacheResponse(res, SIXTY_MINUTES_IN_SECONDS);
     const { productId } = req.params;
     try {
       const product = await productService.getProduct({ productId });

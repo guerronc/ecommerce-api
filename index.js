@@ -2,7 +2,9 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const boom = require("@hapi/boom");
-const debug = require('debug')("app:server");
+const debug = require("debug")("app:server");
+const helmet = require("helmet");
+const cors = require("cors");
 
 const productRouter = require("./routes/views/products");
 const productApiRouter = require("./routes/api/products");
@@ -18,10 +20,15 @@ const {
 
 const isRequestAjaxOrApi = require("./utils/isRequestAjaxOrApi");
 
+//Configuracion CORS
+const corsOptions = { origin: "http://localhost:8000/" };
+
 //app
 const app = express();
 
 //middlewares
+app.use(cors(corsOptions)); //Cuando no se envia ninguna configuracion esta expuesto a todos los dominios
+app.use(helmet());
 app.use(bodyParser.json());
 
 // static files
@@ -34,7 +41,7 @@ app.set("view engine", "pug");
 //routes (Controller)
 app.use("/products", productRouter);
 productApiRouter(app);
-app.use('/api/auth', authApiRouter);
+app.use("/api/auth", authApiRouter);
 
 //Redirect routes
 app.get("/", (req, res) => {
