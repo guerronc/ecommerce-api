@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "set NODE_ENV=production & node index.js",
+    "build": "set NODE_ENV=production & cd public/assets && cleancss -o main.min.css main.css",
     "dev": "set NODE_ENV=development & nodemon index.js",
     "dev:inspect": "nodemon --inspect",
     "dev:debug": "set DEBUG=express:*,app:* & npm run dev",
