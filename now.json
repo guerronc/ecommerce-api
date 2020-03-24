@@ -1,0 +1,19 @@
+{
+  "name": "ecommerce",
+  "version": 2,
+  "builds": [{ "src": "index.js", "use": "@now/node-server" }],
+  "routes": [{ "src": "/(.*)", "dest": "/index.js" }],
+  "env": {
+    "DB_USER": "@db-user",
+    "DB_PASSWORD": "@db-password",
+    "DB_HOST0": "@db-host0",
+    "DB_HOST1": "@db-host1",
+    "DB_HOST2": "@db-host2",
+    "DB_PORT": "@db-port",
+    "DB_NAME": "@db-name-ecommerce",
+    "AUTH_ADMIN_USERNAME": "@auth-admin-username",
+    "AUTH_ADMIN_PASSWORD": "@auth-admin-password",
+    "AUTH_ADMIN_EMAIL": "@auth-admin-email",
+    "AUTH_JWT_SECRET": "@auth-jwt-secret"
+  }
+}

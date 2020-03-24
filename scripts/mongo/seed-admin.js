@@ -20,7 +20,7 @@ const hasAdminUser = async mongoDb => {
 };
 
 const createAdminUser = async(mongoDb) =>{
-    const hashedPassword = await bcrypt.hash(config.authAdminPassport,10);
+    const hashedPassword = await bcrypt.hash(config.authAdminPassword,10);
     const userId = await mongoDb.create("users", buildAdminUser(hashedPassword));
     return userId;
 }

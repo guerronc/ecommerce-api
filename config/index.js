@@ -13,7 +13,7 @@ const config = {
     sentryDns: process.env.SENTRY_DNS,
     sentryId: process.env.SENTRY_ID,
     authAdminUserName: process.env.AUTH_ADMIN_USERNAME,
-    authAdminPassport: process.env.AUTH_ADMIN_PASSPORT,
+    authAdminPassword: process.env.AUTH_ADMIN_PASSWORD,
     authAdminEmail: process.env.AUTH_ADMIN_EMAIL,
     authJwtSecret: process.env.AUTH_JWT_SECRET
 }
