@@ -5,9 +5,9 @@ const debug = require("debug")("app:error");
 const config = require("../../config");
 const isRequestAjaxOrApi = require("../../utils/isRequestAjaxOrApi");
 
-Sentry.init({
-  dsn: `https://${config.sentryDns}/${config.sentryId}`
-});
+// Sentry.init({
+//   dsn: `https://${config.sentryDns}/${config.sentryId}`
+// });
 
 function withErrorStacks(err, stack) {
   if (config.dev) {
@@ -16,7 +16,7 @@ function withErrorStacks(err, stack) {
 }
 
 function logErrors(err, req, res, next) {
-  !config.dev && Sentry.captureException(err);
+  // !config.dev && Sentry.captureException(err);
   debug(err.stack);
   next(err);
 }
