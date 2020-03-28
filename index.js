@@ -9,7 +9,7 @@ const cors = require("cors");
 const productRouter = require("./routes/views/products");
 const productApiRouter = require("./routes/api/products");
 const authApiRouter = require("./routes/api/auth");
-
+//Configuracion del app
 const config = require("./config");
 const {
   logErrors,
