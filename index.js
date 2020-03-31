@@ -27,7 +27,7 @@ const corsOptions = { origin: "http://localhost:8000/" };
 const app = express();
 
 //middlewares
-app.use(cors(corsOptions)); //Cuando no se envia ninguna configuracion esta expuesto a todos los dominios
+app.use(cors()); //Cuando no se envia ninguna configuracion esta expuesto a todos los dominios
 app.use(helmet());
 app.use(bodyParser.json());
 
